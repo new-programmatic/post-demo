@@ -1,0 +1,16 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package ru.awg.rupost;
+
+message AuthDataRequest {
+  string login = 1;
+  string password = 2;
+}
+
+message AuthDataResponse {
+  string token = 1;
+}
+
+service AuthService {
+  rpc auth(AuthDataRequest) returns (AuthDataResponse);
+}
