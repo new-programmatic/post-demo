@@ -4,12 +4,21 @@ option java_multiple_files = true;
 package ru.awg.rupost;
 
 message ProductCard {
-  bytes image = 1;
-  string name = 2;
-  int32 raiting = 3;
-  int32 review_count = 4;
-  double price = 5;
+  string title = 1;
+  double rating = 2;
+  uint32 reviews_count = 3;
+  double price = 4;
+  string image_url = 5;
   string description = 6;
+}
+
+message ProductCardRequest {
+  string token = 1;
+  uint64 id = 2;
+}
+
+message ProductCardResponse {
+  ProductCard products = 1;
 }
 
 message ProductCardsRequest {
@@ -21,5 +30,6 @@ message ProductCardsResponse {
 }
 
 service ProductService {
+  rpc product(ProductCardRequest) returns (ProductCardResponse);
   rpc products(ProductCardsRequest) returns (ProductCardsResponse);
 }

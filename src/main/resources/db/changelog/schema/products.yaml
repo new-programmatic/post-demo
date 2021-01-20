@@ -1,0 +1,123 @@
+databaseChangeLog:
+  - changeSet:
+      author: egarkin
+      id: "Create products table"
+      changes:
+        - createTable:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: title
+                  type: varchar(250)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: rating
+                  type: double
+                  constraints:
+                    nullable: false
+              - column:
+                  name: reviews_count
+                  type: integer
+                  constraints:
+                    nullable: false
+              - column:
+                  name: price
+                  type: decimal
+                  constraints:
+                    nullable: false
+              - column:
+                  name: image_url
+                  type: varchar(256)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: text
+  - changeSet:
+      author: egarkin
+      id: "Insert test data"
+      changes:
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 1
+              - column:
+                  name: title
+                  value: "Test product 1"
+              - column:
+                  name: rating
+                  valueNumeric: 4.8
+              - column:
+                  name: reviews_count
+                  valueNumeric: 123
+              - column:
+                  name: price
+                  valueNumeric: 4512
+              - column:
+                  name: image_url
+                  value: "/images/some-image-1.jpg"
+              - column:
+                  name: description
+                  value: "Test product 1 description"
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 2
+              - column:
+                  name: title
+                  value: "Test product 2"
+              - column:
+                  name: rating
+                  valueNumeric: 0
+              - column:
+                  name: reviews_count
+                  valueNumeric: 0
+              - column:
+                  name: price
+                  valueNumeric: 99999
+              - column:
+                  name: image_url
+                  value: "/images/some-image-2.jpg"
+              - column:
+                  name: description
+                  value: null
+        - insert:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 3
+              - column:
+                  name: title
+                  value: "Test product 3"
+              - column:
+                  name: rating
+                  valueNumeric: 3.5
+              - column:
+                  name: reviews_count
+                  valueNumeric: 10
+              - column:
+                  name: price
+                  valueNumeric: 525001
+              - column:
+                  name: image_url
+                  value: "/images/some-image-1.jpg"
+              - column:
+                  name: description
+                  value: "Test product 3 description"
+      rollback:
+        - delete:
+            tableName: products
+            where: id in (1, 2, 3)
