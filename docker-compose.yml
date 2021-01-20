@@ -1,7 +1,7 @@
 version: '3'
 services:
 
-  authorization-db:
+  db:
     image: postgres:11.1
     container_name: demo-db
     ports:
