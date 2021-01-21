@@ -16,6 +16,7 @@ public interface ProductMapper {
     BigDecimal PENNY_DIVISOR = new BigDecimal(100);
 
     @Mapping(target = "price", source = "price", qualifiedByName = "toPrice")
+    @Mapping(target = "imageUrl", source = "media.path")
     @Mapping(target = "description", source = "description", qualifiedByName = "toDescription")
     ProductCard toDto(ProductEntity product);
 

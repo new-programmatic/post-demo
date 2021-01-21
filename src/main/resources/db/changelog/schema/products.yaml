@@ -8,7 +8,7 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  type: BIGINT
+                  type: bigint
                   autoIncrement: true
                   constraints:
                     primaryKey: true
@@ -34,8 +34,8 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: image_url
-                  type: varchar(256)
+                  name: media_id
+                  type: bigint
                   constraints:
                     nullable: false
               - column:
@@ -64,8 +64,8 @@ databaseChangeLog:
                   name: price
                   valueNumeric: 4512
               - column:
-                  name: image_url
-                  value: "/images/some-image-1.jpg"
+                  name: media_id
+                  valueNumeric: 1
               - column:
                   name: description
                   value: "Test product 1 description"
@@ -88,8 +88,8 @@ databaseChangeLog:
                   name: price
                   valueNumeric: 99999
               - column:
-                  name: image_url
-                  value: "/images/some-image-2.jpg"
+                  name: media_id
+                  valueNumeric: 2
               - column:
                   name: description
                   value: null
@@ -112,8 +112,8 @@ databaseChangeLog:
                   name: price
                   valueNumeric: 525001
               - column:
-                  name: image_url
-                  value: "/images/some-image-1.jpg"
+                  name: media_id
+                  valueNumeric: 3
               - column:
                   name: description
                   value: "Test product 3 description"

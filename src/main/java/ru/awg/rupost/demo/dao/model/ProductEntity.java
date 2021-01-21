@@ -7,10 +7,12 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "PRODUCTS")
+@Builder
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
 @ToString
 public class ProductEntity {
 
@@ -31,8 +33,9 @@ public class ProductEntity {
     @Column(name = "price", nullable = false)
     private BigDecimal price;
 
-    @Column(name = "image_url", nullable = false)
-    private String imageUrl;
+    @OneToOne
+    @JoinColumn(name = "media_id", nullable = false)
+    private MediaEntity media;
 
     @Column(name = "description")
     private String description;
