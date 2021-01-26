@@ -4,7 +4,7 @@ databaseChangeLog:
       id: "Create products table"
       changes:
         - createTable:
-            tableName: products
+            tableName: product
             columns:
               - column:
                   name: id
@@ -46,7 +46,7 @@ databaseChangeLog:
       id: "Insert test data"
       changes:
         - insert:
-            tableName: products
+            tableName: product
             columns:
               - column:
                   name: id
@@ -70,7 +70,7 @@ databaseChangeLog:
                   name: description
                   value: "Test product 1 description"
         - insert:
-            tableName: products
+            tableName: product
             columns:
               - column:
                   name: id
@@ -94,7 +94,7 @@ databaseChangeLog:
                   name: description
                   value: null
         - insert:
-            tableName: products
+            tableName: product
             columns:
               - column:
                   name: id
@@ -119,5 +119,5 @@ databaseChangeLog:
                   value: "Test product 3 description"
       rollback:
         - delete:
-            tableName: products
+            tableName: product
             where: id in (1, 2, 3)
