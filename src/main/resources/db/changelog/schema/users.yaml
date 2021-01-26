@@ -1,0 +1,66 @@
+databaseChangeLog:
+  - changeSet:
+      author: egarkin
+      id: "Create users table"
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: login
+                  type: varchar(256)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: password
+                  type: varchar(256)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: token
+                  type: varchar(32)
+  - changeSet:
+      author: egarkin
+      id: "Insert test data"
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 1
+              - column:
+                  name: login
+                  value: "test1"
+              - column:
+                  name: password
+                  value: "dGVzdDE6cGFzc3dvcmQx" #password1
+              - column:
+                  name: token
+                  value: "test"
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 2
+              - column:
+                  name: login
+                  value: "test2"
+              - column:
+                  name: password
+                  value: "dGVzdDI6cGFzc3dvcmQy" #password2
+              - column:
+                  name: token
+                  value: "test"
+      rollback:
+        - delete:
+            tableName: users
+            where: id in (1, 2)

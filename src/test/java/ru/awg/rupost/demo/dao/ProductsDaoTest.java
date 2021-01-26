@@ -1,5 +1,6 @@
 package ru.awg.rupost.demo.dao;
 
+import lombok.SneakyThrows;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -63,7 +64,8 @@ public class ProductsDaoTest extends AbstractSpringContextTest {
     }
 
     @Test
-    public void whenValidId_thenProductShouldBeFound() throws RecordNotFoundException {
+    @SneakyThrows
+    public void whenValidId_thenProductShouldBeFound() {
         ProductCard productCard = ProductCard.newBuilder()
                 .setTitle("Test title 1")
                 .setRating(1.0)

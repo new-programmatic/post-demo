@@ -1,5 +1,6 @@
 package ru.awg.rupost.demo.service;
 
+import lombok.SneakyThrows;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -28,7 +29,8 @@ public class ProductServiceTest extends AbstractSpringContextTest {
     private ProductCard secondProductCard;
 
     @Before
-    public void setUp() throws RecordNotFoundException {
+    @SneakyThrows
+    public void setUp() {
         firstProductCard = ProductCard.newBuilder()
                 .setTitle("Test title 1")
                 .setRating(1.0)
@@ -52,7 +54,8 @@ public class ProductServiceTest extends AbstractSpringContextTest {
     }
 
     @Test
-    public void whenValidId_thenProductShouldBeFound() throws RecordNotFoundException {
+    @SneakyThrows
+    public void whenValidId_thenProductShouldBeFound() {
         ProductCard foundProduct = productService.getProductById(1L);
 
         assertThat(firstProductCard).isEqualTo(foundProduct);

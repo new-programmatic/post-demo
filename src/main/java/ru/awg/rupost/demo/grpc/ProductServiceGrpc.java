@@ -40,7 +40,7 @@ public class ProductServiceGrpc extends ProductServiceImplBase {
                 responseObserver.onError(new StatusRuntimeException(Status.INTERNAL.withDescription("Server error while getting product by id")));
             }
         } else {
-            responseObserver.onError(new StatusRuntimeException(Status.UNAUTHENTICATED.withDescription("Wrong token")));
+            responseObserver.onError(new StatusRuntimeException(Status.PERMISSION_DENIED.withDescription("Wrong token")));
         }
     }
 
@@ -60,7 +60,7 @@ public class ProductServiceGrpc extends ProductServiceImplBase {
                 responseObserver.onError(new StatusRuntimeException(Status.INTERNAL.withDescription("Server error while getting products")));
             }
         } else {
-            responseObserver.onError(new StatusRuntimeException(Status.UNAUTHENTICATED.withDescription("Wrong token")));
+            responseObserver.onError(new StatusRuntimeException(Status.PERMISSION_DENIED.withDescription("Wrong token")));
         }
     }
 }

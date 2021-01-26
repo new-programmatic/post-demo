@@ -1,6 +1,7 @@
 package ru.awg.rupost.demo.grpc;
 
 import io.grpc.internal.testing.StreamRecorder;
+import lombok.SneakyThrows;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -32,7 +33,8 @@ public class ProductServiceGrpcTest extends AbstractSpringContextTest {
     private ProductCard secondProductCard;
 
     @Before
-    public void setUp() throws RecordNotFoundException {
+    @SneakyThrows
+    public void setUp() {
         firstProductCard = ProductCard.newBuilder()
                 .setTitle("Test title 1")
                 .setRating(1.0)
@@ -90,7 +92,7 @@ public class ProductServiceGrpcTest extends AbstractSpringContextTest {
     }
 
     @Test
-    public void whenCallProductById_invalidToken_thenUnauthenticatedMessage() {
+    public void whenCallProductById_invalidToken_thenPermissionDeniedMessage() {
         ProductCardRequest productCardRequest = ProductCardRequest.newBuilder()
                 .setToken("test")
                 .setId(1L)
@@ -101,7 +103,7 @@ public class ProductServiceGrpcTest extends AbstractSpringContextTest {
 
         assertThat(responseObserver.getValues()).isEmpty();
         assertThat(responseObserver.getError()).isNotNull();
-        assertThat(responseObserver.getError().getMessage()).isEqualTo("UNAUTHENTICATED: Wrong token");
+        assertThat(responseObserver.getError().getMessage()).isEqualTo("PERMISSION_DENIED: Wrong token");
     }
 
     @Test
@@ -121,7 +123,7 @@ public class ProductServiceGrpcTest extends AbstractSpringContextTest {
     }
 
     @Test
-    public void whenCallProducts_invalidToken_thenUnauthenticatedMessage() {
+    public void whenCallProducts_invalidToken_thenPermissionDeniedMessage() {
         ProductCardsRequest productCardsRequest = ProductCardsRequest.newBuilder()
                 .setToken("test")
                 .build();
@@ -131,6 +133,6 @@ public class ProductServiceGrpcTest extends AbstractSpringContextTest {
 
         assertThat(responseObserver.getValues()).isEmpty();
         assertThat(responseObserver.getError()).isNotNull();
-        assertThat(responseObserver.getError().getMessage()).isEqualTo("UNAUTHENTICATED: Wrong token");
+        assertThat(responseObserver.getError().getMessage()).isEqualTo("PERMISSION_DENIED: Wrong token");
     }
 }
