@@ -1,10 +1,10 @@
 package ru.awg.rupost.demo.exception;
 
-public class RecordNotFoundException extends Exception {
+public class AuthenticationException extends Exception {
 
     private static final long serialVersionUID = 1L;
 
-    public RecordNotFoundException(String message) {
+    public AuthenticationException(String message) {
         super(message);
     }
 }

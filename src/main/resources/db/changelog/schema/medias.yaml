@@ -1,0 +1,55 @@
+databaseChangeLog:
+  - changeSet:
+      author: egarkin
+      id: "Create medias table"
+      changes:
+        - createTable:
+            tableName: medias
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: path
+                  type: varchar(256)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      author: egarkin
+      id: "Insert test data"
+      changes:
+        - insert:
+            tableName: medias
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 1
+              - column:
+                  name: path
+                  value: "/images/some-image-1.jpg"
+        - insert:
+            tableName: medias
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 2
+              - column:
+                  name: path
+                  value: "/images/some-image-2.jpg"
+        - insert:
+            tableName: medias
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 3
+              - column:
+                  name: path
+                  value: "/images/some-image-3.jpg"
+      rollback:
+        - delete:
+            tableName: medias
+            where: id in (1, 2, 3)

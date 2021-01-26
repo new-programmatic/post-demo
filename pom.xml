@@ -19,6 +19,8 @@
         <grpc.version>2.5.1.RELEASE</grpc.version>
         <lombok.version>1.18.16</lombok.version>
         <mapstruct.version>1.4.1.Final</mapstruct.version>
+        <guava.version>30.1-jre</guava.version>
+        <grpc.testing.version>1.22.2</grpc.testing.version>
         <os.maven.plugin.version>1.6.1</os.maven.plugin.version>
         <lombok.mapstruct.binding.version>0.2.0</lombok.mapstruct.binding.version>
         <protobuf.maven.plugin.version>0.6.1</protobuf.maven.plugin.version>
@@ -44,12 +46,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -104,6 +100,31 @@
             <artifactId>grpc-client-spring-boot-autoconfigure</artifactId>
             <version>${grpc.version}</version>
             <type>pom</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-testing</artifactId>
+            <version>${grpc.testing.version}</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>
