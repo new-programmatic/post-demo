@@ -1,4 +1,4 @@
-# rupost-demo
+# Для запуска приложения
 
 1. Стартуем постгресс - docker-compose up -d
 2. Компилируем - mvn clean install
@@ -10,8 +10,8 @@ src/test/java/ru/awg/rupost/demo/
 
 # Примененные технологии согласно ТЗ:
 
- Транспорт: Grps
- Контейнер сервлетов: Undertow
- БД: Postgres от 9.5 и выше
- ORM: Hibernate
- Другие библиотеки и фреймворки: Liquibase, Spring, JUnit
+1. Транспорт: Grps
+2. Контейнер сервлетов: Undertow
+3. БД: Postgres от 9.5 и выше
+4. ORM: Hibernate
+5. Другие библиотеки и фреймворки: Liquibase, Spring, JUnit
